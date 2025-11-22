@@ -1,0 +1,14 @@
+// 精准高亮你要的"选课"按钮
+let targetBtn = Array.from(document.querySelectorAll('button, a, input[type="button"], input[type="submit"]'))
+  .find(btn => 
+    btn.getAttribute('onclick') === "pushFjjxxkClass('963e9d7eaf364a409cd8035aefbe0a03','401b9c91d3c647dc96134860dd25e86e')"
+  );
+
+if (targetBtn) {
+  targetBtn.style.outline = '5px solid red';
+  targetBtn.style.boxShadow = '0 0 10px 2px #f00';
+  targetBtn.scrollIntoView({behavior: 'smooth', block: 'center'});
+  console.log('已高亮你要的"选课"按钮:', targetBtn);
+} else {
+  console.log('未找到目标"选课"按钮');
+}
