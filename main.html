@@ -1,0 +1,24 @@
+let timer = setInterval(() => {
+    // 查找所有带有"选课"字样的按钮
+    let btns = Array.from(document.querySelectorAll('button, a, input[type="button"], input[type="submit"]'))
+        .filter(btn =>
+            btn.innerText.includes('选课') ||
+            (btn.value && btn.value.includes('选课'))
+        );
+
+    if (btns.length >= 4) {
+        let btn = btns[3]; // 下标3是第4个
+        // 给高亮显示，方便你确认
+        btn.style.outline = '4px solid red';
+        btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+        // 如果未禁用则点击
+        if (!btn.disabled && !btn.classList.contains('disabled')) {
+            console.log('尝试点击第4个选课按钮:', btn);
+            btn.click();
+        } else {
+            console.log('第4个选课按钮已禁用，等待中...');
+        }
+    } else {
+        console.log('未找到4个及以上"选课"按钮，当前数量:', btns.length);
+    }
+}, 300); // 每0.3秒尝试一次
